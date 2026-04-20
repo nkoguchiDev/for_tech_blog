@@ -1,0 +1,32 @@
+options {
+    directory "/var/cache/bind";
+
+    // すべてのクライアントからのクエリを許可
+    allow-query { any; };
+
+    // DNSSEC 検証
+    dnssec-validation auto;
+
+    // IPv4/IPv6 両方でリッスン
+    listen-on { any; };
+
+    // ----- セキュリティ設定 -----
+    version "none";
+
+    // ----- ログ設定 -----
+    querylog yes;
+};
+
+logging {
+        channel query_log {
+            stderr;
+            severity info;
+            print-time yes;
+            print-severity yes;
+            print-category yes;
+    };
+    
+    category queries {
+                query_log;
+    };
+};
