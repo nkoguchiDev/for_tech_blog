@@ -13,6 +13,15 @@ services:
       - ./bind/config:/etc/bind
       - ./bind/zones:/var/lib/bind
     networks:
+      dns-network:
+        ipv4_address: 172.20.0.10
+
+  kali:
+    image: kalilinux/kali-rolling:latest
+    container_name: kali
+    restart: unless-stopped
+    tty: true
+    networks:
       - dns-network
 
 networks:
