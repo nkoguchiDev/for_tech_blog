@@ -13,10 +13,15 @@ cd src
 sh environments-setup.sh
 ```
 
-コンテナに必要なパッケージをインストールします。
+コンテナの中に入ります。
 
 ```sh
 docker exec -it kali /bin/bash
+```
+
+コンテナに必要なパッケージをインストールします。
+
+```sh
 apt-get update
 apt-get -y install seclists
 apt-get -y install gobuster
