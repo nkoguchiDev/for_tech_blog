@@ -33,9 +33,14 @@ apt-get -y install gobuster
 gobuster dns --domain example.com --resolver 172.20.0.10 -w /usr/share/seclists/Discovery/DNS/subdomains-top1million-5000.txt
 ```
 
-環境をクリーンアップします。
+コンテナから出ます。
 
 ```sh
 exit
+```
+
+環境をクリーンアップします。
+
+```sh
 sh environments-clean.sh
 ```
