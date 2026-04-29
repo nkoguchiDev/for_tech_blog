@@ -7,5 +7,6 @@ $TTL 86400
         865400          ;Minimum TTL
 )
 @       IN      NS      example.com.
-@       IN      A       192.168.50.100
-www     IN      A       192.168.50.101
+@       IN      A       172.20.1.1
+www     IN      A       172.20.1.2
+api     IN      A       172.20.1.3
