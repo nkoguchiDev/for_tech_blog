@@ -47,6 +47,7 @@ apt-get -y install gobuster
 ```
 
 ローカルのDNSに対してDNSブルートフォース攻撃を実行します。
+この時いくつかのサブドメインが見つかります。
 
 ```sh
 gobuster dns --domain example.com --resolver 172.20.0.10 -w /usr/share/seclists/Discovery/DNS/subdomains-top1million-5000.txt
