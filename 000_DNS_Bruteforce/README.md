@@ -53,6 +53,7 @@ apt-get -y install gobuster
 
 ローカルのDNSに対してDNSブルートフォース攻撃を実行します。
 この時いくつかのサブドメインが見つかります。
+resolverを指定しない場合、インターネットで実際に運用されているドメインに対してDNSブルートフォース攻撃を行うため、必ず`--resolver`オプションによりローカルで稼働しているリゾルバを指定してください。
 
 ```sh
 gobuster dns --domain example.com --resolver 172.20.0.10 -w /usr/share/seclists/Discovery/DNS/subdomains-top1million-5000.txt
