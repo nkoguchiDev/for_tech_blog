@@ -1,0 +1,43 @@
+services:
+  bind9:
+    image: ubuntu/bind9:latest
+    container_name: bind9
+    environment:
+      - BIND9_USER=root
+      - TZ=Asia/Tokyo
+    ports:
+      - "53:53/udp"
+      - "53:53/tcp"
+    volumes:
+      - ./bind/config:/etc/bind
+      - ./bind/zones:/var/lib/bind
+    networks:
+      app-network:
+        ipv4_address: 172.30.1.10
+
+  nginx:
+    image: nginx:latest
+    container_name: nginx
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf
+      - ./nginx/www/html:/usr/share/nginx/html
+    ports:
+      - "80:80"
+    networks:
+      app-network:
+        ipv4_address: 172.30.1.100
+
+  kali:
+    image: kalilinux/kali-rolling:latest
+    container_name: kali
+    restart: unless-stopped
+    tty: true
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.30.1.0/24
