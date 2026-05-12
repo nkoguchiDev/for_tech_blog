@@ -56,7 +56,8 @@ apt-get -y install gobuster
 resolverを指定しない場合、インターネットで実際に運用されているドメインに対してDNSブルートフォース攻撃を行うため、必ず`--resolver`オプションによりローカルで稼働しているリゾルバを指定してください。
 
 ```sh
-gobuster dns --domain example.com --resolver 172.20.0.100 -w /usr/share/seclists/Discovery/DNS/subdomains-top1million-5000.txt
+gobuster dns --domain example.com --resolver 172.30.1.10 -w /usr/share/seclists/Discovery/DNS/subdomains-top1million-5000.txt
+gobuster vhost --domain example.com -u http://172.30.1.100 -w /usr/share/seclists/Discovery/DNS/subdomains-top1million-20000.txt --append-domain true
 ```
 
 コンテナから出ます。
